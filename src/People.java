@@ -1,4 +1,4 @@
-Adimport jodd.json.JsonSerializer;
+import jodd.json.JsonSerializer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
