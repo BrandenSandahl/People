@@ -1,6 +1,10 @@
 
+import jodd.json.JsonSerializer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,6 +25,12 @@ public class People {
         }
 
         System.out.println(personMap);
+        try {
+            writeToJson(personMap);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Something has gone wrong with the file writing process. Please contact Doug.");
+        }
     }
 
 
@@ -47,7 +57,16 @@ public class People {
         }
 
         return personMap;
+    }
 
+    public static void writeToJson(HashMap<String, ArrayList<Person>> personMap) throws IOException {
+        File f = new File("peopleJson.json");
+        JsonSerializer serializer = new JsonSerializer();
+        FileWriter fw = new FileWriter(f);
 
+        String toWrite = serializer.include("*").serialize(personMap);
+
+        fw.write(toWrite);
+        fw.close();
     }
 }

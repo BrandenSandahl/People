@@ -88,7 +88,7 @@ public class Person implements Comparable{
     @Override
     public String toString() {
 
-        return String.format("%s %s at %s is in %s", firstName, lastName, email, country);
+        return String.format("%s %s at %s is in %s%n", firstName, lastName, email, country);
     }
 }
 
